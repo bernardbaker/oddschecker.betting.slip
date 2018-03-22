@@ -1,2 +1,2 @@
 export count from './count'
-export foo from './foo'
+export odds from './odds'

@@ -5,14 +5,40 @@ var router = express.Router()
 app.use(express.static('public'));
 
 let data = null
+let bets = null
+
+function loadData() {
+  var fs = require('fs');
+  return JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
+}
 
 router.use(function (req, res, next) {
+  let json = null
+  data = []
+  bets = []
   if (req.headers['type'] === 'decimalOddsMoreThanTwo') {
-    data = [1,2,3]
+    json = loadData()
+    json.bets.forEach((element, index) => {
+      bets.push({name: element.name, odds:[]})
+      let odds = element.odds.filter(item => {
+        return item.oddsDecimal >= 2.0
+      })
+      bets[index].odds.push(...odds)
+    });
+    data = bets.filter(item => item.odds.length)
   }
   if (req.headers['type'] === 'decimalOddsLessThanTwo') {
-    data = [3,2,1]
+    json = loadData()
+    json.bets.forEach((element, index) => {
+      bets.push({name: element.name, odds:[]})
+      let odds = element.odds.filter(item => {
+        return item.oddsDecimal < 2.0
+      })
+      bets[index].odds.push(...odds)
+    });
+    data = bets.filter(item => item.odds.length)
   }
+  console.log(data)
   next()
 })
 
