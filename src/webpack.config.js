@@ -14,15 +14,17 @@ module.exports = {
       exclude: /node_modules/,
       include: __dirname
     }]
-  },
+  }
+}
+/*
+,
   devServer: {
     proxy: {
       '/decimalOddsMoreThanTwo': 'http://localhost:3000',
       '/decimalOddsLessThanTwo': 'http://localhost:3000'
     }
   }
-}
-
+  */
 
 
 // This will make the redux-simpler-router module resolve to the

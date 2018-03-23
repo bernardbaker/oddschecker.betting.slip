@@ -1,15 +1,17 @@
-var express = require('express');
+var express = require('express')
+var cors = require('cors')
 var app = express();
 var router = express.Router()
 
-app.use(express.static('public'));
+app.use(cors())
+app.use(express.static('public'))
 
 let data = null
 let bets = null
 
 function loadData() {
   var fs = require('fs');
-  return JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
+  return JSON.parse(fs.readFileSync('./data/data.json', 'utf8'))
 }
 
 router.use(function (req, res, next) {

@@ -1,10 +1,11 @@
 {
-  "name": "rrr-basic-example",
-  "version": "0.0.0",
+  "name": "oddschecker-make-a-bet-and-receipt",
+  "version": "1.0.0",
   "repository": "reactjs/react-router-redux",
   "license": "MIT",
   "dependencies": {
     "cross-fetch": "^2.1.0",
+    "http-proxy-middleware": "^0.18.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.3.0",
@@ -12,7 +13,8 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.2.1",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -34,8 +36,7 @@
     "webpack-dev-server": "^1.16.5"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --history-api-fallback --no-info --open",
-    "build": "webpack --mode production",
-    "serve": "webpack --mode production && http-server ../dist"
+    "dev": "webpack-dev-server --mode development --history-api-fallback --no-info --open",
+    "build": "webpack --mode production"
   }
 }

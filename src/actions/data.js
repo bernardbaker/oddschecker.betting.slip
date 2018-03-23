@@ -3,7 +3,7 @@ import { OPTION1, OPTION_1_SUCCESS, OPTION2, OPTION_2_SUCCESS } from '../constan
 export function option1() {
   return function action(dispatch) {
 
-    const request = fetch('decimalOddsMoreThanTwo',
+    const request = fetch('/decimalOddsMoreThanTwo',
     {
       headers: {
         type: 'decimalOddsMoreThanTwo'
@@ -32,7 +32,7 @@ export function option1Success(data) {
 export function option2() {
   return function action(dispatch) {
 
-    const request = fetch('decimalOddsLessThanTwo',
+    const request = fetch('/decimalOddsLessThanTwo',
     {
       headers: {
         type: 'decimalOddsLessThanTwo'

@@ -1,0 +1,32 @@
+{
+  "name": "oddschecker.betting.slip",
+  "version": "1.0.0",
+  "description": "A modular built app for oddschecker technical test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernardbaker/oddschecker.betting.slip.git"
+  },
+  "keywords": [
+    "OddsChecker",
+    "React",
+    "Express",
+    "API",
+    "Client"
+  ],
+  "author": "Bernard T. A. Baker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernardbaker/oddschecker.betting.slip/issues"
+  },
+  "homepage": "https://github.com/bernardbaker/oddschecker.betting.slip#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "http-proxy-middleware": "^0.18.0",
+    "serve-static": "^1.13.2"
+  }
+}
