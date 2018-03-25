@@ -18,7 +18,6 @@ export default function update(state = initialState, action) {
   switch(action.type) {
     case OPTION_1_SUCCESS :
       if(!state.option_1_data_set) {
-        console.log('payload', action.payload)
         return Object.assign({}, state, {
           data: action.payload, option_1_data: action.payload, option_1_data_set: true
         })
@@ -30,7 +29,6 @@ export default function update(state = initialState, action) {
       }
     case OPTION_2_SUCCESS :
       if(!state.option_2_data_set) {
-        console.log('payload', action.payload)
         return Object.assign({}, state, {
           data: action.payload, option_2_data: action.payload, option_2_data_set: true
         })

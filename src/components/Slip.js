@@ -2,46 +2,55 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { option1, option2, storeOption, calculateStake } from '../actions/data'
-import styles from './Slip.css'
-
+import './Styles.css'
 
 function Slip({ bets, option, option1, option2, storeOption, calculateStake }) {
 
   return (
-    <div>
+    <div
+      className="bet-slip-container"
+    >
       <div>
-        <p>Betslip</p>
-        <select onChange={event => {
-          
-          storeOption(event.target.value)
+        <p
+          className="title"
+        >
+          Betslip
+        </p>
+        <select
+          className="option-select"
+          onChange={event => {  
+            
+            storeOption(event.target.value)
 
-          switch(event.target.value) {
-            case 'more-than-2' :
-              option1()
-              break;
+            switch(event.target.value) {
+              case 'more-than-2' :
+                option1()
+                break;
 
-            case 'less-than-2' :
-              option2()
-              break;
+              case 'less-than-2' :
+                option2()
+                break;
+            }
           }
-        }}>
+        }>
           <option value="default">Select your odds</option>
           <option value="more-than-2">More than 2</option>
           <option value="less-than-2">Less than 2</option>
         </select>
       </div>
       <div>
-        <p>Best bets</p>
         <div className="options">
           {bets.map(item =>
             item.odds.map((odd, index) =>
-              <div>
-                <div>
-                  <p>Name: {item.name}</p>
-                  <p>Odds: {odd.oddsDecimal}</p>
+              <div className="bet-container">
+                <div className="bet-offer">
+                  <p className="bet-name">Name: {item.name}</p>
+                  <p className="bet-odds">Odds: {odd.oddsDecimal}</p>
                 </div>
-                <div>
+                <div className="stake-container">
                   <div
+                    className="stake"
+
                     onMouseOver={
                       event => {
                         event.target.contentEditable = true
@@ -52,26 +61,22 @@ function Slip({ bets, option, option1, option2, storeOption, calculateStake }) {
                     onClick={
                       event => {
                         event.target.focus = true
-                        console.dir(event.target)
                       }
                     }
 
                     onBlur={
                       event => {
-                        let re = /^\d+[.]\d{2}$/
+                        let re = /^\d+[.]\d{2}|[0]$/
                         let valid = re.test(event.target.innerText)
                         if(!valid) {
-                          console.log(event.target.innerText)
                           alert('Enter a valid amount, with both pounds and pence. E.g: 5.99')
                           event.target.innerText = 0
                         } else {
-                          console.log('valid', event.target.innerText)
                           odd.stake = event.target.innerText
                         }
                       }
                     }
-                    
-                    style={{border:"1px solid", width:"100px", height:"30px"}} className="stake">
+                  >
                     {odd.stake}
                   </div>
                 </div>
@@ -82,11 +87,14 @@ function Slip({ bets, option, option1, option2, storeOption, calculateStake }) {
       </div>
       <br/>
       <footer>
-        <Link to="/bet" onClick={
-          event => {
-            calculateStake()
+        <Link to="/bet"
+          className="bet-now"
+          onClick={
+            event => {
+              calculateStake()
+            }
           }
-        }>Bet Now</Link>
+        >Bet Now</Link>
       </footer>
     </div>
   )

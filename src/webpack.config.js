@@ -8,12 +8,15 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules/,
-      include: __dirname
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        include: __dirname
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+    ]
   },
   devServer: {
     proxy: {

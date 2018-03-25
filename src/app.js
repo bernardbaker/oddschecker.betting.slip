@@ -19,6 +19,8 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
+// Uncomment to view state in the dev tools extension
+/*
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
     <LogMonitor theme="tomorrow" preserveScrollTop={false} />
@@ -34,9 +36,6 @@ const store = createStore(
     )
   )
 )
-
-
-
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
@@ -49,6 +48,28 @@ ReactDOM.render(
         </Route>
       </Router>
       <DevTools />
+    </div>
+  </Provider>,
+  document.getElementById('mount')
+)
+*/
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunk
+  )
+)
+const history = syncHistoryWithStore(browserHistory, store)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <Router history={history}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Slip}/>
+          <Route path="bet" component={Receipt}/>
+        </Route>
+      </Router>
     </div>
   </Provider>,
   document.getElementById('mount')
