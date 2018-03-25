@@ -26,6 +26,9 @@ router.use(function (req, res, next) {
         return item.oddsDecimal >= 2.0
       })
       bets[index].odds.push(...odds)
+      bets[index].odds.forEach(item => {
+        item.stake = 0
+      })
     });
     data = bets.filter(item => item.odds.length)
   }
@@ -37,6 +40,9 @@ router.use(function (req, res, next) {
         return item.oddsDecimal < 2.0
       })
       bets[index].odds.push(...odds)
+      bets[index].odds.forEach(item => {
+        item.stake = 0
+      })
     });
     data = bets.filter(item => item.odds.length)
   }

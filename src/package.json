@@ -36,7 +36,7 @@
     "webpack-dev-server": "^1.16.5"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode development --history-api-fallback --no-info --open",
+    "start": "webpack-dev-server --mode development --history-api-fallback --no-info --open",
     "build": "webpack --mode production"
   }
 }

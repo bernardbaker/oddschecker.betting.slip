@@ -9,13 +9,11 @@ module.exports = {
       // proxy all requests starting with /api
       '/decimalOddsMoreThanTwo': {
         target: "http://localhost:3000",
-        changeOrigin: true,
-        secure: false,
+        changeOrigin: true
       },
       '/decimalOddsLessThanTwo': {
         target: "http://localhost:3000",
-        changeOrigin: true,
-        secure: false,
+        changeOrigin: true
       }
     }
   }

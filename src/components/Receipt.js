@@ -15,5 +15,5 @@ function Receipt({ total }) {
 }
 
 export default connect(
-  state => ({ total: state.count.number})
+  state => ({ total: state.odds.total})
 )(Receipt)

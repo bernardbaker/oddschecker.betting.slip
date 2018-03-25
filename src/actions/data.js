@@ -1,15 +1,19 @@
-import { OPTION1, OPTION_1_SUCCESS, OPTION2, OPTION_2_SUCCESS } from '../constants'
+import { 
+  OPTION1,
+  OPTION_1_SUCCESS,
+  OPTION2,
+  OPTION_2_SUCCESS,
+  STORE_OPTION,
+  CALCULATE_STAKE } from '../constants'
 
 export function option1() {
   return function action(dispatch) {
-
     const request = fetch('/decimalOddsMoreThanTwo',
     {
       headers: {
         type: 'decimalOddsMoreThanTwo'
       }
     })
-    
     return request.then(
       response => {
         response.json()
@@ -31,14 +35,12 @@ export function option1Success(data) {
 
 export function option2() {
   return function action(dispatch) {
-
     const request = fetch('/decimalOddsLessThanTwo',
     {
       headers: {
         type: 'decimalOddsLessThanTwo'
       }
     })
-    
     return request.then(
       response => {
         response.json()
@@ -47,7 +49,7 @@ export function option2() {
         })
       },
       err => console.log(err)
-    );
+    )
   }
 }
 
@@ -55,5 +57,18 @@ export function option2Success(data) {
   return {
     type: OPTION_2_SUCCESS,
     payload: data
+  }
+}
+
+export function storeOption(o) {
+  return {
+    type: STORE_OPTION,
+    option: o
+  }
+}
+
+export function calculateStake() {
+  return {
+    type: CALCULATE_STAKE
   }
 }

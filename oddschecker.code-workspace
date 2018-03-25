@@ -1,14 +1,11 @@
 {
 "folders": [
-	{
-		"path": "C:\\Users\\Bernard Baker\\workspace\\Boilerplate-server-frontend"
-	},
-	{
-		"path": "."
-	},
-	{
-		"path": "C:\\Users\\Bernard Baker\\workspace\\react-router-redux"
-	}
+  {
+    "path": "C:\\Users\\Bernard Baker\\workspace\\Boilerplate-server-frontend"
+  },
+  {
+    "path": "."
+  }
 ],
   "settings": {
     "git.ignoreLimitWarning": true
