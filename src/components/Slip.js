@@ -66,7 +66,7 @@ function Slip({ bets, option, option1, option2, storeOption, calculateStake }) {
 
                     onBlur={
                       event => {
-                        let re = /^\d+[.]\d{2}|[0]$/
+                        let re = /^(\d+[.]\d{2})$/
                         let valid = re.test(event.target.innerText)
                         if(!valid) {
                           alert('Enter a valid amount, with both pounds and pence. E.g: 5.99')

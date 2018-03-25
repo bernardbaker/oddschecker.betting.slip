@@ -24,6 +24,10 @@ Object.keys(proxyTable).forEach(function (context) {
 
 app.use(serveStatic(__dirname + "/dist"))
 
+app.all('*', function (req, res) {
+  res.redirect(301, '/');
+})
+
 var port = process.env.PORT || 5000
 app.listen(port)
 console.log('server started '+ port)
