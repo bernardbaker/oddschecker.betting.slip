@@ -2,7 +2,8 @@ import {
   OPTION_1_SUCCESS,
   OPTION_2_SUCCESS,
   STORE_OPTION,
-  CALCULATE_STAKE } from '../constants'
+  CALCULATE_STAKE,
+  BET_AGAIN } from '../constants'
 
 const initialState = {
   data: [],
@@ -56,6 +57,16 @@ export default function update(state = initialState, action) {
       })
       return Object.assign({}, state, {
         total: value
+      })
+    case BET_AGAIN :
+      return Object.assign({}, state, {
+        data: [],
+        option_1_data: [],
+        option_2_data: [],
+        option_1_data_set: false,
+        option_2_data_set: false,
+        option: null,
+        total: 0
       })
     default :
       return state

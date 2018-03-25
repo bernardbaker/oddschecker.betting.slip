@@ -68,6 +68,7 @@ function Slip({ bets, option, option1, option2, storeOption, calculateStake }) {
                       event => {
                         let re = /^(\d+[.]\d{2})$/
                         let valid = re.test(event.target.innerText)
+                        if(event.target.innerText === '0') return
                         if(!valid) {
                           alert('Enter a valid amount, with both pounds and pence. E.g: 5.99')
                           event.target.innerText = 0

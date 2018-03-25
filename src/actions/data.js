@@ -4,7 +4,8 @@ import {
   OPTION2,
   OPTION_2_SUCCESS,
   STORE_OPTION,
-  CALCULATE_STAKE } from '../constants'
+  CALCULATE_STAKE,
+  BET_AGAIN } from '../constants'
 
 export function option1() {
   return function action(dispatch) {
@@ -70,5 +71,11 @@ export function storeOption(o) {
 export function calculateStake() {
   return {
     type: CALCULATE_STAKE
+  }
+}
+
+export function betAgain() {
+  return {
+    type: BET_AGAIN
   }
 }

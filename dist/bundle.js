@@ -52559,6 +52559,16 @@
 	      return Object.assign({}, state, {
 	        total: value
 	      });
+	    case _constants.BET_AGAIN:
+	      return Object.assign({}, state, {
+	        data: [],
+	        option_1_data: [],
+	        option_2_data: [],
+	        option_1_data_set: false,
+	        option_2_data_set: false,
+	        option: null,
+	        total: 0
+	      });
 	    default:
 	      return state;
 	  }
@@ -52579,6 +52589,7 @@
 	var OPTION_2_SUCCESS = exports.OPTION_2_SUCCESS = 'OPTION_2_SUCCESS';
 	var STORE_OPTION = exports.STORE_OPTION = 'STORE_OPTION';
 	var CALCULATE_STAKE = exports.CALCULATE_STAKE = 'CALCULATE_STAKE';
+	var BET_AGAIN = exports.BET_AGAIN = 'BET_AGAIN';
 
 /***/ }),
 /* 927 */
@@ -52768,7 +52779,7 @@
 	                    },
 
 	                    onBlur: function onBlur(event) {
-	                      var re = /^\d+[.]\d{2}|[0]$/;
+	                      var re = /^(\d+[.]\d{2})$/;
 	                      var valid = re.test(event.target.innerText);
 	                      if (!valid) {
 	                        alert('Enter a valid amount, with both pounds and pence. E.g: 5.99');
@@ -52823,6 +52834,7 @@
 	exports.option2Success = option2Success;
 	exports.storeOption = storeOption;
 	exports.calculateStake = calculateStake;
+	exports.betAgain = betAgain;
 
 	var _constants = __webpack_require__(926);
 
@@ -52887,6 +52899,12 @@
 	  };
 	}
 
+	function betAgain() {
+	  return {
+	    type: _constants.BET_AGAIN
+	  };
+	}
+
 /***/ }),
 /* 931 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -52946,7 +52964,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\r\n  font-family: Trebuchet MS,sans-serif!important;\r\n}\r\n\r\n.bet-slip-container {\r\n  padding: 10px;\r\n  padding-top: 30px;\r\n  margin: 10px;\r\n  border: 1px solid;\r\n  border-radius: 10px;\r\n  width: 400px;\r\n  background-color: rgb(0,0,0);\r\n  background-image: url(\"/images/logo.png\");\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.receipt {\r\n  height: 494px;\r\n  color: rgb(255,255,255)\r\n}\r\n\r\n.receipt-total {\r\n  font-size: 20px;\r\n}\r\n\r\n.title {\r\n  display: inline-block;\r\n  text-transform: capitalize;\r\n  color: rgb(255,255,255);\r\n  border-bottom: 2px solid #fddb00;\r\n}\r\n\r\n.option-select {\r\n  display: inline-block;\r\n  position: relative;\r\n  left: 200px;\r\n  border-radius: 3px;\r\n  padding: 10px;\r\n  top: 12px;\r\n}\r\n\r\n.options {\r\n  border: 1px solid;\r\n  border-bottom: 1px solid #fddb00;\r\n  border-radius: 3px;\r\n  width: 390px;\r\n  height: 350px;\r\n  overflow-y: scroll;\r\n  box-shadow: #fddb00 0px 2px 2px 0px;\r\n  background-color: rgb(255,255,255);\r\n  margin-top: 30px;\r\n  background-image: url(\"/images/options-background.jpg\");\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.bet-container {\r\n  display: inline-block;\r\n  padding: 20px;\r\n  padding-left: 10px;\r\n}\r\n\r\n.bet-offer {\r\n  display: inline-block;\r\n}\r\n\r\n.bet-name {\r\n  background-color: #fddb00;\r\n  font-weight: bold;\r\n  padding: 10px;\r\n  border: 3px solid rgb(255,255,255);\r\n}\r\n\r\n.bet-odds {\r\n  background-color: #000000;\r\n  font-weight: bold;\r\n  color: rgb(255,255,255);\r\n  padding: 10px;\r\n  border: 3px solid rgb(255,255,255);\r\n}\r\n\r\n.bet-offer:last-child() {\r\n  display: inline-block;\r\n}\r\n\r\n.stake-container {\r\n  display: inline-block;\r\n  margin-left: 10px;\r\n}\r\n\r\n.stake {\r\n  border: 2px solid;\r\n  border-radius: 5px;\r\n  width: 80px;\r\n  height: 40px;\r\n  text-align: center;\r\n  position: relative;\r\n  bottom: 30px;\r\n  left: 20px;\r\n  padding-top: 20px;\r\n  box-shadow: #fddb00 1px 2px 5px 0px;\r\n  outline: none;\r\n  background-color: rgb(255,255,255);\r\n}\r\n\r\n.bet-now {\r\n  position: relative;\r\n  top: -4px;\r\n  left: 300px;\r\n  width: 90px;\r\n  height: 30px;\r\n  border-radius: 3px;\r\n  display: block;\r\n  text-align: center;\r\n  padding-top: 10px;\r\n  text-decoration: none;\r\n  text-transform: capitalize;\r\n  background-color: #fddb00;\r\n  color: black;\r\n  font-size: 16px;\r\n}\r\n\r\n.bet-now:hover {\r\n  background-color: #ffef87;\r\n}", ""]);
+	exports.push([module.id, "* {\r\n  font-family: Trebuchet MS,sans-serif!important;\r\n}\r\n\r\n.bet-slip-container {\r\n  padding: 10px;\r\n  padding-top: 30px;\r\n  margin: 10px;\r\n  border: 2px solid #fddb00;\r\n  border-radius: 10px;\r\n  width: 400px;\r\n  background-color: rgb(0,0,0);\r\n  background-image: url(\"/images/logo.png\");\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.receipt {\r\n  height: 494px;\r\n  color: rgb(255,255,255)\r\n}\r\n\r\n.receipt-total {\r\n  font-size: 20px;\r\n}\r\n\r\n.title {\r\n  display: inline-block;\r\n  text-transform: capitalize;\r\n  color: rgb(255,255,255);\r\n  border-bottom: 2px solid #fddb00;\r\n}\r\n\r\n.option-select {\r\n  display: inline-block;\r\n  position: relative;\r\n  left: 200px;\r\n  border-radius: 3px;\r\n  padding: 10px;\r\n  top: 12px;\r\n}\r\n\r\n.options {\r\n  border: 1px solid;\r\n  border-bottom: 1px solid #fddb00;\r\n  border-radius: 3px;\r\n  width: 390px;\r\n  height: 350px;\r\n  overflow-y: auto;\r\n  box-shadow: #fddb00 0px 2px 2px 0px;\r\n  background-color: rgb(255,255,255);\r\n  margin-top: 30px;\r\n  background-image: url(\"/images/options-background.jpg\");\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.bet-container {\r\n  display: inline-block;\r\n  padding: 20px;\r\n  padding-left: 10px;\r\n}\r\n\r\n.bet-offer {\r\n  display: inline-block;\r\n}\r\n\r\n.bet-name {\r\n  background-color: #fddb00;\r\n  font-weight: bold;\r\n  padding: 10px;\r\n  border: 3px solid rgb(255,255,255);\r\n}\r\n\r\n.bet-odds {\r\n  background-color: #000000;\r\n  font-weight: bold;\r\n  color: rgb(255,255,255);\r\n  padding: 10px;\r\n  border: 3px solid rgb(255,255,255);\r\n}\r\n\r\n.bet-offer:last-child() {\r\n  display: inline-block;\r\n}\r\n\r\n.stake-container {\r\n  display: inline-block;\r\n  margin-left: 10px;\r\n}\r\n\r\n.stake {\r\n  border: 2px solid;\r\n  border-radius: 5px;\r\n  width: 90px;\r\n  height: 40px;\r\n  text-align: center;\r\n  position: relative;\r\n  bottom: 30px;\r\n  left: 10px;\r\n  padding-top: 20px;\r\n  box-shadow: #fddb00 1px 2px 5px 0px;\r\n  outline: none;\r\n  background-color: rgb(255,255,255);\r\n}\r\n\r\n.stake:hover {\r\n  background-color: #ffef87;\r\n}\r\n\r\n.bet-now {\r\n  position: relative;\r\n  top: -4px;\r\n  left: 300px;\r\n  width: 90px;\r\n  height: 30px;\r\n  border-radius: 3px;\r\n  display: block;\r\n  text-align: center;\r\n  padding-top: 10px;\r\n  text-decoration: none;\r\n  text-transform: capitalize;\r\n  background-color: #fddb00;\r\n  color: black;\r\n  font-size: 16px;\r\n}\r\n\r\n.bet-now:hover {\r\n  background-color: #ffef87;\r\n}\r\n\r\n.place-stake,\r\n.bet-again {\r\n  position: relative;\r\n  width: 360px;\r\n  top: 100px;\r\n  left: 20px;\r\n}", ""]);
 
 	// exports
 
@@ -53524,14 +53542,21 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(857);
+
 	var _reactRedux = __webpack_require__(645);
+
+	var _data = __webpack_require__(930);
 
 	__webpack_require__(931);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function Receipt(_ref) {
-	  var total = _ref.total;
+	  var total = _ref.total,
+	      betAgain = _ref.betAgain,
+	      option1 = _ref.option1,
+	      option2 = _ref.option2;
 
 
 	  return _react2.default.createElement(
@@ -53550,7 +53575,11 @@
 	        'Betslip Receipt'
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement(
+	      total === 0 ? _react2.default.createElement(
+	        'p',
+	        null,
+	        'You have not placed any stakes'
+	      ) : _react2.default.createElement(
 	        'p',
 	        null,
 	        'Your bet has been placed'
@@ -53566,6 +53595,24 @@
 	          '\xA3',
 	          parseFloat(total).toFixed(2)
 	        )
+	      ),
+	      total === 0 ? _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/',
+	          className: 'bet-now place-stake'
+	        },
+	        'Place a stake'
+	      ) : _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/',
+	          onClick: function onClick(event) {
+	            betAgain();
+	            //option2()
+	            //option1()
+	          },
+	          className: 'bet-now bet-again'
+	        },
+	        'Bet Again'
 	      )
 	    )
 	  );
@@ -53573,7 +53620,7 @@
 
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	  return { total: state.odds.total };
-	})(Receipt);
+	}, { betAgain: _data.betAgain, option1: _data.option1, option2: _data.option2 })(Receipt);
 
 /***/ })
 /******/ ]);

@@ -71,10 +71,6 @@ ReactDOM.render(
           <IndexRoute component={Slip}/>
           <Route path="bet" component={Receipt}/>
         </Route>
-        <Route path="*" component={App}>
-          <IndexRoute component={Slip}/>
-          <Route path="bet" component={Receipt}/>
-        </Route>
       </Router>
     </div>
   </Provider>,
