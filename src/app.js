@@ -53,6 +53,8 @@ ReactDOM.render(
   document.getElementById('mount')
 )
 */
+
+// Comment this out if running in developer mode
 const store = createStore(
   reducer,
   applyMiddleware(
@@ -74,3 +76,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('mount')
 )
+// End of comment

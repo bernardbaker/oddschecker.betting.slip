@@ -5,8 +5,6 @@ var serveStatic = require('serve-static')
 
 app = express();
 
-app.use('/bet', express.static(__dirname + "/dist"))
-
 var config = require('./config')
 var proxyMiddleware = require('http-proxy-middleware')
 
@@ -25,6 +23,7 @@ Object.keys(proxyTable).forEach(function (context) {
 });
 
 app.use(serveStatic(__dirname + "/dist"))
+
 var port = process.env.PORT || 5000
 app.listen(port)
 console.log('server started '+ port)
